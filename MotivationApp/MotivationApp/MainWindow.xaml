@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MotivationApp"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
+    <Grid ScrollViewer.HorizontalScrollBarVisibility="Auto">
         
     </Grid>
 </Window>
