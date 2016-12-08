@@ -30,5 +30,11 @@ namespace MotivationApp.UI
             shelf.Show();
             
         }
+
+        private void SchedulerButton_Click(object sender, RoutedEventArgs e)
+        {
+            SchedulerWindow sch = new SchedulerWindow();
+            sch.Show();
+        }
     }
 }

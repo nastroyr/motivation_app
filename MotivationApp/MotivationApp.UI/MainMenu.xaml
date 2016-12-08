@@ -10,5 +10,8 @@
         <Button Name="BookshelfButton"  HorizontalAlignment="Left" Margin="421,17,0,0" VerticalAlignment="Top" Width="84" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Height="77" Click="BookshelfButton_Click">
             <Image Source="Icons/bookshelf.png" Height="67" Width="67"></Image>
         </Button>
+        <Button Name="SchedulerButton" HorizontalAlignment="Left" Margin="421,111,0,0" VerticalAlignment="Top" Width="78" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Height="77" Click="SchedulerButton_Click">
+            <Image Source="Icons/scheduler.png" Height="69" Width="78"></Image>
+        </Button>
     </Grid>
 </Window>

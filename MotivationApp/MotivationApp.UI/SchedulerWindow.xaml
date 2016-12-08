@@ -1,13 +1,16 @@
-﻿<Window x:Class="MotivationApp.UI.BookshelfWindow"
+﻿<Window x:Class="MotivationApp.UI.SchedulerWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MotivationApp.UI"
         mc:Ignorable="d"
-        Title="BookshelfWindow" Height="341.232" Width="608.531">
+        Title="SchedulerWindow" Height="300" Width="300" ResizeMode="NoResize">
     <Grid>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="291" Width="384" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="55*"/>
+            <ColumnDefinition Width="91*"/>
+        </Grid.ColumnDefinitions>
 
     </Grid>
 </Window>
