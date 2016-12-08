@@ -12,9 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Books.Data;
 
-namespace MotivationApp
+namespace MotivationApp.UI
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
@@ -24,7 +23,13 @@ namespace MotivationApp
         public MainWindow()
         {
             InitializeComponent();
-            
+        }
+
+        private void StartButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenu menu = new MainMenu();
+            menu.Show();
+            Close();
         }
     }
 }
