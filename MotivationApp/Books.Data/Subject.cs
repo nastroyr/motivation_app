@@ -10,6 +10,6 @@ namespace Books.Data
     {
         public int SubjectID { get; set; }
         public string SubjectName { get; set; }
-        public List<Book> Books { get; set; }
+        public List<Book> Book { get; set; }
     }
 }

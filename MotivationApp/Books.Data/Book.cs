@@ -15,6 +15,8 @@ namespace Books.Data
         public string AboutBook { get; set; }
         public string WhereToBuy { get; set; }
         public string WhereToDownloadFree { get; set; }
+        public int SubjectID { get; set; }
+        public int GenreID { get; set; }
         public Genre Genre { get; set; }
         public Subject Subject { get; set; }
     }

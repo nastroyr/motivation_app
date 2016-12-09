@@ -135,6 +135,21 @@
   <ItemGroup>
     <Resource Include="Icons\scheduler.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\showall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Books.Data\Books.Data.csproj">
+      <Project>{d7d9fe77-eb86-477b-ba26-6bd54ab45286}</Project>
+      <Name>Books.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\ok.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

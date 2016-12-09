@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Books.Data
 {
-    class Request
+    public class Request
     {
         Context context = new Context();
 
@@ -21,18 +21,76 @@ namespace Books.Data
                           select new BookViewModel { NameOfBook = b.NameOfBook, AuthorName = b.AuthorName, AboutAuthor = b.AboutAuthor, AboutBook = b.AboutBook, GenreName = b.Genre.GenreName, SubjectName = b.Subject.SubjectName, WhereToBuy = b.WhereToBuy, WhereToDownloadFree = b.WhereToDownloadFree }).ToList();
             foreach (var book in result)
             {
-                books.Add(r);
+                books.Add(book);
             }
-
+            return books;
         }
-        public List<BookViewModel> SortByGenre()
+
+        public List<BookViewModel> SortByGenre(int id)
         {
             List<BookViewModel> books = new List<BookViewModel>();
             var result = (from b in context.Books
                               .Include(st => st.Subject)
                               .Include(g => g.Genre)
-                              .Where(b => b.Genre.GenreID == 1)
+                              .Where(b => b.Genre.GenreID == id)
                           select new BookViewModel { NameOfBook = b.NameOfBook, AuthorName = b.AuthorName, AboutAuthor = b.AboutAuthor, AboutBook = b.AboutBook, GenreName = b.Genre.GenreName, SubjectName = b.Subject.SubjectName, WhereToBuy = b.WhereToBuy, WhereToDownloadFree = b.WhereToDownloadFree }).ToList();
+            foreach (var r in result)
+            {
+                books.Add(r);
+            }
+            return books;
+        }
+
+        public List<BookViewModel> SortByGenre(int id1, int id2)
+        {
+            List<BookViewModel> books = new List<BookViewModel>();
+            var result = (from b in context.Books
+                              .Include(st => st.Subject)
+                              .Include(g => g.Genre)
+                              .Where(b => b.Genre.GenreID == id1 || b.Genre.GenreID == id2)
+                          select new BookViewModel { NameOfBook = b.NameOfBook, AuthorName = b.AuthorName, AboutAuthor = b.AboutAuthor, AboutBook = b.AboutBook, GenreName = b.Genre.GenreName, SubjectName = b.Subject.SubjectName, WhereToBuy = b.WhereToBuy, WhereToDownloadFree = b.WhereToDownloadFree }).ToList();
+            foreach (var r in result)
+            {
+                books.Add(r);
+            }
+            return books;
+        }
+
+        public List<BookViewModel> SortByGenre(int id1, int id2, int id3)
+        {
+            List<BookViewModel> books = new List<BookViewModel>();
+            var result = (from b in context.Books
+                              .Include(st => st.Subject)
+                              .Include(g => g.Genre)
+                              .Where(b => b.Genre.GenreID == id1 || b.Genre.GenreID == id2 || b.Genre.GenreID == id3)
+                          select new BookViewModel { NameOfBook = b.NameOfBook, AuthorName = b.AuthorName, AboutAuthor = b.AboutAuthor, AboutBook = b.AboutBook, GenreName = b.Genre.GenreName, SubjectName = b.Subject.SubjectName, WhereToBuy = b.WhereToBuy, WhereToDownloadFree = b.WhereToDownloadFree }).ToList();
+            foreach (var r in result)
+            {
+                books.Add(r);
+            }
+            return books;
+        }
+
+        public List<BookViewModel> SortByGenre(int id1, int id2, int id3, int id4)
+        {
+            List<BookViewModel> books = new List<BookViewModel>();
+            var result = (from b in context.Books
+                              .Include(st => st.Subject)
+                              .Include(g => g.Genre)
+                              .Where(b => b.Genre.GenreID == id1 || b.Genre.GenreID == id2 || b.Genre.GenreID == id3 || b.Genre.GenreID == id4)
+                          select new BookViewModel { NameOfBook = b.NameOfBook, AuthorName = b.AuthorName, AboutAuthor = b.AboutAuthor, AboutBook = b.AboutBook, GenreName = b.Genre.GenreName, SubjectName = b.Subject.SubjectName, WhereToBuy = b.WhereToBuy, WhereToDownloadFree = b.WhereToDownloadFree }).ToList();
+            foreach (var r in result)
+            {
+                books.Add(r);
+            }
+            return books;
+        }
+        public List<BookViewModel> SortBySubject(List<BookViewModel> model, string subject)
+        {
+            List<BookViewModel> books = new List<BookViewModel>();
+            var result = (from m in model
+                              .Where(m => m.SubjectName == subject)
+                          select m).ToList();
             foreach (var r in result)
             {
                 books.Add(r);

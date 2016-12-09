@@ -5,9 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MotivationApp.UI"
         mc:Ignorable="d"
-        Title="BookshelfWindow" Height="341.232" Width="608.531">
-    <Grid>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="291" Width="384" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}"/>
+        Title="BookshelfWindow" Height="474.232" Width="738.531">
 
+    <Grid Margin="0,0,2,0">
+
+        <DataGrid Name="BooksDataGrid" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="291" Width="366"  Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}">
+        </DataGrid>
+        <Button x:Name="ShowAllButton"  HorizontalAlignment="Left" Margin="175,335,0,0" VerticalAlignment="Top" Width="55" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Click="ShowAllButton_Click" Height="57">
+            <Image Source="Icons/showall.png" Height="47" Width="41"></Image>
+        </Button>
+        <Label x:Name="label"  HorizontalAlignment="Left" Margin="53,335,0,0" VerticalAlignment="Top" Width="122" Height="57">
+            <TextBlock Width="112" Text="Посмотреть весь список книг" TextWrapping="Wrap" HorizontalAlignment="Center" FontFamily="Buxton Sketch" Height="47" FontSize="18"/>
+        </Label>
+        <Button x:Name="SortButton" HorizontalAlignment="Left" Margin="555,25,0,0" VerticalAlignment="Top" Width="64" Height="60" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Click="SortButton_Click">
+            <Image Source="Icons/settings.png" Height="55" Width="50"></Image>
+        </Button>
+        <Label x:Name="label_Copy"  HorizontalAlignment="Left" Margin="416,28,0,0" VerticalAlignment="Top" Width="134" Height="57">
+            <TextBlock Width="122" Text="Выбор по жанрам и тематике" TextWrapping="Wrap" HorizontalAlignment="Center" FontFamily="Buxton Sketch" Height="47" FontSize="18"/>
+        </Label>
+        <StackPanel x:Name="StackPanelSort" HorizontalAlignment="Left" Height="359" Margin="397,85,0,0" VerticalAlignment="Top" Width="302" IsEnabled="False">
+            <Label x:Name="GenreLabel" Content="Выберите жанр:" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Buxton Sketch" FontSize="20" Height="35" Width="138" Margin="10,0,0,0"/>
+            <CheckBox x:Name="NovelCheckBox" Content="Роман" VerticalAlignment="Top" FontSize="16" Margin="27,0,0,0" Height="23" HorizontalAlignment="Left" Width="110"/>
+            <CheckBox x:Name="BusinessBookСheckBox" Content="Зарубежная деловая литература" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="27,0,0,0" Width="262" Height="26"/>
+            <CheckBox x:Name="PsychologyCheckBox" Content="Психология" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="27,0,0,0" Width="110" Height="27"/>
+            <CheckBox x:Name="PhilosophyCheckBox" Content="Философия" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Height="31" Width="121" Margin="27,0,0,0"/>
+            <Label x:Name="SubjectLabel" Content="Выберите тематику:" FontFamily="Buxton Sketch" FontSize="20" Margin="10,0,95,0" Height="33"/>
+            <CheckBox x:Name="SuccessCheckBox" Content="Стремление к успеху" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="27,0,0,0" Width="180" Height="27"/>
+            <CheckBox x:Name="BusinessCheckBox" Content="Бизнес" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="27,0,0,0" Width="131" Height="28"/>
+            <CheckBox x:Name="SelfDevelopmentСheckBox" Content="Саморазвитие" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="27,0,0,0" Width="131"/>
+            <Label x:Name="OKLabel" Content="Найти" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Buxton Sketch" FontSize="20" Margin="27,0,0,0" Width="66" Height="31"/>
+            <Button x:Name="OkButton"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="66" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Click="OkButton_Click" Height="69" Margin="27,0,0,0">
+                <Image Source="Icons/ok.png" Height="50" Width="56"/>
+            </Button>
+        </StackPanel>
     </Grid>
 </Window>
