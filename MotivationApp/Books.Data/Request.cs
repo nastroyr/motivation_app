@@ -97,5 +97,74 @@ namespace Books.Data
             }
             return books;
         }
+        public List<BookViewModel> SortBySubject(List<BookViewModel> model, string subject, string subject2)
+        {
+            List<BookViewModel> books = new List<BookViewModel>();
+            var result = (from m in model
+                              .Where(m => m.SubjectName == subject || m.SubjectName == subject2)
+                          select m).ToList();
+            foreach (var r in result)
+            {
+                books.Add(r);
+            }
+            return books;
+        }
+        public List<BookViewModel> SortBySubject(List<BookViewModel> model, string subject, string subject2, string subject3)
+        {
+            List<BookViewModel> books = new List<BookViewModel>();
+            var result = (from m in model
+                              .Where(m => m.SubjectName == subject || m.SubjectName == subject2 || m.SubjectName == subject3)
+                          select m).ToList();
+            foreach (var r in result)
+            {
+                books.Add(r);
+            }
+            return books;
+        }
+        public List<BookViewModel> SortBySubject(string subject)
+        {
+            List<BookViewModel> books = new List<BookViewModel>();
+            var result = (from b in context.Books
+                              .Include(st => st.Subject)
+                              .Include(g => g.Genre)
+                              .Where(b => b.Subject.SubjectName == subject)
+                          select new BookViewModel { NameOfBook = b.NameOfBook, AuthorName = b.AuthorName, AboutAuthor = b.AboutAuthor, AboutBook = b.AboutBook, GenreName = b.Genre.GenreName, SubjectName = b.Subject.SubjectName, WhereToBuy = b.WhereToBuy, WhereToDownloadFree = b.WhereToDownloadFree }).ToList();
+            foreach (var r in result)
+            {
+                books.Add(r);
+            }
+            return books;
+        }
+
+        public List<BookViewModel> SortBySubject(string subject, string subject2)
+        {
+            List<BookViewModel> books = new List<BookViewModel>();
+            var result = (from b in context.Books
+                              .Include(st => st.Subject)
+                              .Include(g => g.Genre)
+                              .Where(b => b.Subject.SubjectName == subject || b.Subject.SubjectName == subject2)
+                          select new BookViewModel { NameOfBook = b.NameOfBook, AuthorName = b.AuthorName, AboutAuthor = b.AboutAuthor, AboutBook = b.AboutBook, GenreName = b.Genre.GenreName, SubjectName = b.Subject.SubjectName, WhereToBuy = b.WhereToBuy, WhereToDownloadFree = b.WhereToDownloadFree }).ToList();
+            foreach (var r in result)
+            {
+                books.Add(r);
+            }
+            return books;
+        }
+
+        public List<BookViewModel> SortBySubject(string subject, string subject2, string subject3)
+        {
+            List<BookViewModel> books = new List<BookViewModel>();
+            var result = (from b in context.Books
+                              .Include(st => st.Subject)
+                              .Include(g => g.Genre)
+                              .Where(b => b.Subject.SubjectName == subject || b.Subject.SubjectName == subject2 || b.Subject.SubjectName == subject3)
+                          select new BookViewModel { NameOfBook = b.NameOfBook, AuthorName = b.AuthorName, AboutAuthor = b.AboutAuthor, AboutBook = b.AboutBook, GenreName = b.Genre.GenreName, SubjectName = b.Subject.SubjectName, WhereToBuy = b.WhereToBuy, WhereToDownloadFree = b.WhereToDownloadFree }).ToList();
+            foreach (var r in result)
+            {
+                books.Add(r);
+            }
+            return books;
+        }
+
     }
 }

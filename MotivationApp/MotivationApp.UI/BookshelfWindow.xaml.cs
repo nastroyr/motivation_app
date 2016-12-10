@@ -11,7 +11,13 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.IO;
 using Books.Data;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.Collections;
+using System.Windows.Controls.Primitives;
+using iTextSharp.text.html;
 
 namespace MotivationApp.UI
 {
@@ -25,13 +31,42 @@ namespace MotivationApp.UI
         public BookshelfWindow()
         {
             InitializeComponent();
-            
+
+        }
+        public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj)
+       where T : DependencyObject
+        {
+            if (depObj != null)
+            {
+                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+                {
+                    DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
+                    if (child != null && child is T)
+                    {
+                        yield return (T)child;
+                    }
+
+                    foreach (T childOfChild in FindVisualChildren<T>(child))
+                    {
+                        yield return childOfChild;
+                    }
+                }
+            }
         }
 
-        private void ShowAllButton_Click(object sender, RoutedEventArgs e)
+        public static childItem FindVisualChild<childItem>(DependencyObject obj)
+            where childItem : DependencyObject
         {
-            
-            BooksDataGrid.ItemsSource = request.ShowAll();
+            foreach (childItem child in FindVisualChildren<childItem>(obj))
+            {
+                return child;
+            }
+
+            return null;
+        }
+
+        public void Headers()
+        {
             BooksDataGrid.Columns[0].Header = "Название книги";
             BooksDataGrid.Columns[1].Header = "Имя автора";
             BooksDataGrid.Columns[2].Header = "Об авторе";
@@ -40,15 +75,21 @@ namespace MotivationApp.UI
             BooksDataGrid.Columns[5].Header = "Тематика";
             BooksDataGrid.Columns[6].Header = "Где можно купить бумажную версию";
             BooksDataGrid.Columns[7].Header = "Где можно скачать бесплатно";
+        }
 
+        private void ShowAllButton_Click(object sender, RoutedEventArgs e)
+        {
+            BooksDataGrid.ItemsSource = request.ShowAll();
+            Headers();
         }
 
         private void SortButton_Click(object sender, RoutedEventArgs e)
         {
-            StackPanelSort.IsEnabled = true;
+
+            SortingCanvas.IsEnabled = true;
         }
 
-        private void OkButton_Click(object sender, RoutedEventArgs e)
+        private void OKButton_Click_1(object sender, RoutedEventArgs e)
         {
             List<int> checkGenre = new List<int>();
             List<string> checkSubj = new List<string>();
@@ -58,19 +99,19 @@ namespace MotivationApp.UI
             {
                 checkGenre.Add(1);
             }
-            if(BusinessBookСheckBox.IsChecked == true)
+            if (BusinessBookСheckBox.IsChecked == true)
             {
                 checkGenre.Add(2);
             }
-            if(PsychologyCheckBox.IsChecked == true)
+            if (PsychologyCheckBox.IsChecked == true)
             {
                 checkGenre.Add(3);
             }
-            if(PhilosophyCheckBox.IsChecked == true)
+            if (PhilosophyCheckBox.IsChecked == true)
             {
                 checkGenre.Add(4);
             }
-            if(SuccessCheckBox.IsChecked == true)
+            if (SuccessCheckBox.IsChecked == true)
             {
                 checkSubj.Add("Стремление к успеху");
             }
@@ -82,42 +123,126 @@ namespace MotivationApp.UI
             {
                 checkSubj.Add("Саморазвитие");
             }
-            if (checkGenre.Count == 1)
+            if (checkGenre.Count > 0)
             {
-                res = request.SortByGenre(checkGenre[0]);
-                //BooksDataGrid.ItemsSource = request.SortByGenre(checkGenre[0]);
-                //BooksDataGrid.Columns[0].Header = "Название книги";
-                //BooksDataGrid.Columns[1].Header = "Имя автора";
-                //BooksDataGrid.Columns[2].Header = "Об авторе";
-                //BooksDataGrid.Columns[3].Header = "О книге";
-                //BooksDataGrid.Columns[4].Header = "Жанр";
-                //BooksDataGrid.Columns[5].Header = "Тематика";
-                //BooksDataGrid.Columns[6].Header = "Где можно купить бумажную версию";
-                //BooksDataGrid.Columns[7].Header = "Где можно скачать бесплатно";
+                if (checkGenre.Count == 1)
+                {
+                    res = request.SortByGenre(checkGenre[0]);
+                }
+
+                else if (checkGenre.Count == 2)
+                {
+                    res = request.SortByGenre(checkGenre[0], checkGenre[1]);
+
+                }
+                else if (checkGenre.Count == 3)
+                {
+                    res = request.SortByGenre(checkGenre[0], checkGenre[1], checkGenre[2]);
+                }
+                else if (checkGenre.Count == 4)
+                {
+                    res = request.SortByGenre(checkGenre[0], checkGenre[1], checkGenre[2], checkGenre[3]);
+                }
+                if (checkSubj.Count == 0)
+                {
+                    BooksDataGrid.ItemsSource = res;
+                    Headers();
+                }
+                else if (checkSubj.Count == 1)
+                {
+                    BooksDataGrid.ItemsSource = request.SortBySubject(res, checkSubj[0]);
+                    Headers();
+                }
+                else if (checkSubj.Count == 2)
+                {
+                    BooksDataGrid.ItemsSource = request.SortBySubject(res, checkSubj[0], checkSubj[1]);
+                    Headers();
+                }
+                else if (checkSubj.Count == 3)
+                {
+                    BooksDataGrid.ItemsSource = request.SortBySubject(res, checkSubj[0], checkSubj[1], checkSubj[2]);
+                    Headers();
+                }
             }
-            else if (checkGenre.Count == 2)
+            else
             {
-                res = request.SortByGenre(checkGenre[0], checkGenre[1]);
-               
+
+                if (checkSubj.Count == 0)
+                {
+                    MessageBox.Show("Извините, но в нашей библиотеке нет книг, подходящих данным условиям! Попробуйте снова с другими параметрами :)");
+                }
+                else if (checkSubj.Count == 1)
+                {
+                    BooksDataGrid.ItemsSource = request.SortBySubject(res, checkSubj[0]);
+                    Headers();
+                }
+                else if (checkSubj.Count == 2)
+                {
+                    BooksDataGrid.ItemsSource = request.SortBySubject(res, checkSubj[0], checkSubj[1]);
+                    Headers();
+                }
+                else if (checkSubj.Count == 3)
+                {
+                    BooksDataGrid.ItemsSource = request.SortBySubject(res, checkSubj[0], checkSubj[1], checkSubj[2]);
+                    Headers();
+                }
             }
-            else if (checkGenre.Count == 3)
+        }
+
+        private void ResetButton_Click(object sender, RoutedEventArgs e)
+        {
+            NovelCheckBox.IsChecked = false;
+            BusinessBookСheckBox.IsChecked = false;
+            PsychologyCheckBox.IsChecked = false;
+            PhilosophyCheckBox.IsChecked = false;
+            SuccessCheckBox.IsChecked = false;
+            SelfDevelopmentСheckBox.IsChecked = false;
+            BusinessCheckBox.IsChecked = false;
+        }
+
+        private void PDFButton_Click(object sender, RoutedEventArgs e)
+        {
+            string ttf = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "ARIAL.TTF");
+            var baseFont = BaseFont.CreateFont(ttf, BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+            var font = new Font(baseFont, Font.DEFAULTSIZE, Font.NORMAL);
+
+            
+            Document doc = new Document(PageSize.LETTER, 8, 8, 35, 30);
+            PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream("Test.pdf", FileMode.Create));
+            doc.Open();
+
+            PdfPTable table = new PdfPTable(BooksDataGrid.Columns.Count);
+            for (int i = 0; i < BooksDataGrid.Columns.Count; i++)
             {
-                res = request.SortByGenre(checkGenre[0], checkGenre[1], checkGenre[2]);
-                
+                table.AddCell(new Phrase(BooksDataGrid.Columns[i].Header.ToString(), font));
             }
-            else if (checkGenre.Count == 4)
+
+            table.HeaderRows = 1;
+
+            IEnumerable itemsSource = BooksDataGrid.ItemsSource as IEnumerable;
+            if (itemsSource != null)
             {
-                res = request.SortByGenre(checkGenre[0], checkGenre[1], checkGenre[2], checkGenre[3]);
-                
+                foreach (var item in itemsSource)
+                {
+                    DataGridRow row = BooksDataGrid.ItemContainerGenerator.ContainerFromItem(item) as DataGridRow;
+                    if (row != null)
+                    {
+                        DataGridCellsPresenter presenter = FindVisualChild<DataGridCellsPresenter>(row);
+                        for (int i = 0; i < BooksDataGrid.Columns.Count; ++i)
+                        {
+                            DataGridCell cell = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(i);
+                            TextBlock txt = cell.Content as TextBlock;
+                            if (txt != null)
+                            {
+                                table.AddCell(new Phrase(txt.Text, font));
+                            }
+                        }
+                    }
+                }
             }
-            if (checkSubj.Count == 0)
-            {
-                
-            }
-            else if (checkSubj.Count == 1)
-            {
-                BooksDataGrid.ItemsSource = request.SortBySubject(res, checkSubj[0]);
-            }
+            doc.Add(table);
+            doc.Close();
+            MessageBox.Show("Всё готово!");
         }
     }
 }
