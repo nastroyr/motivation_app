@@ -2,9 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Books.Data
 {
@@ -18,6 +15,8 @@ namespace Books.Data
         }
 
         DataSet _dataset;
+        IEnumerable<MotivationQuote> _quotes;
+        IEnumerable<MotivationImage> _images;
 
         public IEnumerable<Genre> GenresRep
         {
@@ -42,9 +41,49 @@ namespace Books.Data
                 return _dataset.Books;
             }
         }
+
+        public IEnumerable<MotivationQuote> Quotes
+        {
+            get
+            {
+                return _quotes;
+            }
+        }
+
+        public IEnumerable<MotivationImage> Images
+        {
+            get
+            {
+                return _images;
+            }
+        }
+
+        public string LastPath {get ;set;}
+
         public Repository()
         {
-            _dataset = JsonConvert.DeserializeObject<DataSet>(File.ReadAllText("Books.json"));
+            string pathBase = Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory + "../../../");
+            _dataset = JsonConvert.DeserializeObject<DataSet>(File.ReadAllText(pathBase + "Books.json"));
+
+            _quotes = new List<MotivationQuote>();
+            string[] allQuotes = File.ReadAllLines(pathBase + "quotes.txt");
+            foreach(string q in allQuotes)
+            {
+                ((List<MotivationQuote>)_quotes).Add(new MotivationQuote(q));
+            }
+
+            _images = new List<MotivationImage>();
+            int i = 1;
+            while(true)
+            {
+                string url = pathBase + "img\\img (" + i.ToString() + ").jpg";
+                LastPath = url;
+                if (File.Exists(url))
+                    ((List<MotivationImage>)_images).Add(new MotivationImage(url));
+                else
+                    break;
+                i++;
+            }
         }
     }
 }

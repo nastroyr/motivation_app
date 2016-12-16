@@ -8,7 +8,12 @@ namespace Books.Data
 {
     public class MotivationQuote
     {
-        public int QuoteID { get; set; }
+        public int MotivationQuoteID { get; set; }
         public string QuoteText { get; set; }
+
+        public MotivationQuote(string q)
+        {
+            QuoteText = q;
+        }
     }
 }

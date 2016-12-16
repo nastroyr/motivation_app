@@ -19,5 +19,15 @@ namespace Books.Data
         public int GenreID { get; set; }
         public Genre Genre { get; set; }
         public Subject Subject { get; set; }
+
+        public string GenreName
+        {
+            get { return Genre.GenreName; }
+        }
+
+        public string SubjectName
+        {
+            get { return Subject.SubjectName; }
+        }
     }
 }

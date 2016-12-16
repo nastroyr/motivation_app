@@ -63,7 +63,12 @@
     <Compile Include="Migrations\201612092021038_meow.Designer.cs">
       <DependentUpon>201612092021038_meow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612161105132_quotes and images.cs" />
+    <Compile Include="Migrations\201612161105132_quotes and images.Designer.cs">
+      <DependentUpon>201612161105132_quotes and images.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="MotivationImage.cs" />
     <Compile Include="MotivationQuote.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
@@ -77,6 +82,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201612092021038_meow.resx">
       <DependentUpon>201612092021038_meow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612161105132_quotes and images.resx">
+      <DependentUpon>201612161105132_quotes and images.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

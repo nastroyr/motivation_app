@@ -13,6 +13,10 @@ namespace Books.Data
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Subject> Subjects { get; set; }
 
+        public DbSet<MotivationQuote> MotivationQuotes { get; set; }
+
+        public DbSet<MotivationImage> MotivationImages { get; set; }
+
         public Context() : base("localsql")
         {
 

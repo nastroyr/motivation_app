@@ -65,31 +65,7 @@ namespace MotivationApp.UI
             return null;
         }
 
-        public void Headers()
-        {
-            BooksDataGrid.Columns[0].Header = "Название книги";
-            BooksDataGrid.Columns[1].Header = "Имя автора";
-            BooksDataGrid.Columns[2].Header = "Об авторе";
-            BooksDataGrid.Columns[3].Header = "О книге";
-            BooksDataGrid.Columns[4].Header = "Жанр";
-            BooksDataGrid.Columns[5].Header = "Тематика";
-            BooksDataGrid.Columns[6].Header = "Где можно купить бумажную версию";
-            BooksDataGrid.Columns[7].Header = "Где можно скачать бесплатно";
-        }
-
-        private void ShowAllButton_Click(object sender, RoutedEventArgs e)
-        {
-            BooksDataGrid.ItemsSource = request.ShowAll();
-            Headers();
-        }
-
-        private void SortButton_Click(object sender, RoutedEventArgs e)
-        {
-
-            SortingCanvas.IsEnabled = true;
-        }
-
-        private void OKButton_Click_1(object sender, RoutedEventArgs e)
+        private void OKButton_Click(object sender, RoutedEventArgs e)
         {
             List<int> checkGenre = new List<int>();
             List<string> checkSubj = new List<string>();
@@ -125,79 +101,39 @@ namespace MotivationApp.UI
             }
             if (checkGenre.Count > 0)
             {
-                if (checkGenre.Count == 1)
-                {
-                    res = request.SortByGenre(checkGenre[0]);
-                }
-
-                else if (checkGenre.Count == 2)
-                {
-                    res = request.SortByGenre(checkGenre[0], checkGenre[1]);
-
-                }
-                else if (checkGenre.Count == 3)
-                {
-                    res = request.SortByGenre(checkGenre[0], checkGenre[1], checkGenre[2]);
-                }
-                else if (checkGenre.Count == 4)
-                {
-                    res = request.SortByGenre(checkGenre[0], checkGenre[1], checkGenre[2], checkGenre[3]);
-                }
+                res = request.SortByGenre(checkGenre);
                 if (checkSubj.Count == 0)
                 {
                     BooksDataGrid.ItemsSource = res;
-                    Headers();
                 }
-                else if (checkSubj.Count == 1)
+                else
                 {
-                    BooksDataGrid.ItemsSource = request.SortBySubject(res, checkSubj[0]);
-                    Headers();
-                }
-                else if (checkSubj.Count == 2)
-                {
-                    BooksDataGrid.ItemsSource = request.SortBySubject(res, checkSubj[0], checkSubj[1]);
-                    Headers();
-                }
-                else if (checkSubj.Count == 3)
-                {
-                    BooksDataGrid.ItemsSource = request.SortBySubject(res, checkSubj[0], checkSubj[1], checkSubj[2]);
-                    Headers();
+                    BooksDataGrid.ItemsSource = request.SortBySubject(res, checkSubj);
                 }
             }
             else
             {
-
                 if (checkSubj.Count == 0)
                 {
-                    MessageBox.Show("Извините, но в нашей библиотеке нет книг, подходящих данным условиям! Попробуйте снова с другими параметрами :)");
+                    BooksDataGrid.ItemsSource = request.ShowAll();
                 }
-                else if (checkSubj.Count == 1)
+                else
                 {
-                    BooksDataGrid.ItemsSource = request.SortBySubject(res, checkSubj[0]);
-                    Headers();
-                }
-                else if (checkSubj.Count == 2)
-                {
-                    BooksDataGrid.ItemsSource = request.SortBySubject(res, checkSubj[0], checkSubj[1]);
-                    Headers();
-                }
-                else if (checkSubj.Count == 3)
-                {
-                    BooksDataGrid.ItemsSource = request.SortBySubject(res, checkSubj[0], checkSubj[1], checkSubj[2]);
-                    Headers();
+                    BooksDataGrid.ItemsSource = request.SortBySubject(null, checkSubj);
                 }
             }
         }
 
         private void ResetButton_Click(object sender, RoutedEventArgs e)
         {
-            NovelCheckBox.IsChecked = false;
-            BusinessBookСheckBox.IsChecked = false;
-            PsychologyCheckBox.IsChecked = false;
-            PhilosophyCheckBox.IsChecked = false;
-            SuccessCheckBox.IsChecked = false;
-            SelfDevelopmentСheckBox.IsChecked = false;
-            BusinessCheckBox.IsChecked = false;
+            foreach(Object o in sortingStackPanel.Children)
+            {
+                if (o is CheckBox)
+                {
+                    ((CheckBox)o).IsChecked = false;
+                }
+            }
+            BooksDataGrid.ItemsSource = request.ShowAll();
         }
 
         private void PDFButton_Click(object sender, RoutedEventArgs e)

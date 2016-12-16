@@ -38,6 +38,18 @@ namespace Books.Data.Migrations
                 context.Subjects.AddRange(repo.SubjectsRep);
                 context.SaveChanges();
             }
+
+            int q = context.MotivationQuotes.Count();
+            if (q == 0)
+            {
+                context.MotivationQuotes.AddRange(repo.Quotes);
+            }
+
+            int i = context.MotivationImages.Count();
+            if (i == 0)
+            {
+                context.MotivationImages.AddRange(repo.Images);
+            }
         }
     }
 }
