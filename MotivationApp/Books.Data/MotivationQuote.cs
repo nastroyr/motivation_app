@@ -15,5 +15,10 @@ namespace Books.Data
         {
             QuoteText = q;
         }
+
+        public MotivationQuote()
+        {
+            
+        }
     }
 }

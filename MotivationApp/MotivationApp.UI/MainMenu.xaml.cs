@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Books.Data;
+using System;
 using System.Windows;
+using System.Windows.Media.Imaging;
 
 namespace MotivationApp.UI
 {
@@ -8,31 +10,49 @@ namespace MotivationApp.UI
     /// </summary>
     public partial class MainMenu : Window
     {
+        Reminder reminder;
+
         public MainMenu()
         {
             InitializeComponent();
-        }
-
-        private void TimerTick()
-        {
-
+            reminder = new Reminder();
+            reminder.OnBookUpdate += (b => GridBookInfo.DataContext = b);
+            reminder.OnQuoteUpdate += (q => TextBlockQuote.Text = q.QuoteText);
+            reminder.OnImagePopUp += (i => ShowImageWindow(i));
+            reminder.Start();
         }
 
         private void BookshelfButton_Click(object sender, RoutedEventArgs e)
         {
             BookshelfWindow shelf = new BookshelfWindow();
-            shelf.Show();
+            shelf.ShowDialog();
         }
 
         private void SchedulerButton_Click(object sender, RoutedEventArgs e)
         {
             SchedulerWindow sch = new SchedulerWindow();
-            sch.Show();
+            sch.ShowDialog();
         }
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            SettingsWindow window = new SettingsWindow();
+            window.ShowDialog();
+            reminder.Restart();
+        }
+
+        private void ShowImageWindow(MotivationImage i)
+        {
+            BitmapImage bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri(i.ImgURL, UriKind.Absolute);
+            bitmap.EndInit();
+
+            ImageWindow window = new ImageWindow(bitmap);
+            window.Height = bitmap.Height;
+            window.Width = bitmap.Width;
+
+            window.ShowDialog();
         }
     }
 }

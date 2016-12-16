@@ -48,7 +48,46 @@ namespace Books.Data
                         WhereToDownloadFree = b.WhereToDownloadFree
                     }).ToList();
         }
-        
+
+        public MotivationQuote RandomQuote()
+        {
+            MotivationQuote quote = null;
+            int qCount = context.MotivationQuotes.Count(q => true);
+            if (qCount > 0)
+            {
+                Random rand = new Random();
+                int skip = rand.Next(qCount);
+                quote = context.MotivationQuotes.OrderBy(q => q.MotivationQuoteID).Skip(skip).Take(1).First();
+            }
+            return quote;
+        }
+
+        public Book RandomBook()
+        {
+            Book book = null;
+            int bCount = context.Books.Count(b => true);
+            if (bCount > 0)
+            {
+                Random rand = new Random();
+                int skip = rand.Next(bCount);
+                book = context.Books.OrderBy(b => b.BookID).Skip(skip).Take(1).Include(b => b.Genre).Include(b => b.Subject).First();
+            }
+            return book;
+        }
+
+        public MotivationImage RandomMotivationImage()
+        {
+            MotivationImage img = null;
+            int iCount = context.MotivationImages.Count(i => true);
+            if (iCount > 0)
+            {
+                Random rand = new Random();
+                int skip = rand.Next(iCount);
+                img = context.MotivationImages.OrderBy(i => i.MotivationImageID).Skip(skip).Take(1).First();
+            }
+            return img;
+        }
+
         public List<BookViewModel> SortBySubject(List<BookViewModel> model, List<string> subjects)
         {
             if (model == null)
@@ -62,7 +101,25 @@ namespace Books.Data
 
         public IEnumerable<MotivationQuote> GetAllQuotes()
         {
-            throw new NotImplementedException();
+            return context.MotivationQuotes;
+        }
+
+        public void AddQuote(string text)
+        {
+            if (!string.IsNullOrEmpty(text))
+            {
+                context.MotivationQuotes.Add(new MotivationQuote(text));
+            }
+            context.SaveChanges();
+        }
+
+        public void RemoveQuote(MotivationQuote quote)
+        {
+            if (quote != null && context.MotivationQuotes.Any(q => q.MotivationQuoteID == quote.MotivationQuoteID))
+            {
+                context.MotivationQuotes.Remove(quote);
+            }
+            context.SaveChanges();
         }
     }
 }

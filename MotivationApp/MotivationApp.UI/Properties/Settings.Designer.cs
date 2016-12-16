@@ -25,7 +25,7 @@ namespace MotivationApp.UI.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
         public int ImageInterval {
             get {
                 return ((int)(this["ImageInterval"]));
@@ -37,7 +37,7 @@ namespace MotivationApp.UI.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
         public int BookInterval {
             get {
                 return ((int)(this["BookInterval"]));
@@ -49,7 +49,7 @@ namespace MotivationApp.UI.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
         public int QuoteInterval {
             get {
                 return ((int)(this["QuoteInterval"]));

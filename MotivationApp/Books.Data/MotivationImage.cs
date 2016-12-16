@@ -16,5 +16,10 @@ namespace Books.Data
         {
             ImgURL = url;
         }
+
+        public MotivationImage()
+        {
+            
+        }
     }
 }

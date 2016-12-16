@@ -9,8 +9,8 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition />
+            <ColumnDefinition/>
+            <ColumnDefinition Width="200"/>
         </Grid.ColumnDefinitions>
 
         <DataGrid Name="BooksDataGrid" Margin="10" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="true">

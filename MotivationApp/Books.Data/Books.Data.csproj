@@ -67,6 +67,10 @@
     <Compile Include="Migrations\201612161105132_quotes and images.Designer.cs">
       <DependentUpon>201612161105132_quotes and images.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612161819171_fix.cs" />
+    <Compile Include="Migrations\201612161819171_fix.Designer.cs">
+      <DependentUpon>201612161819171_fix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MotivationImage.cs" />
     <Compile Include="MotivationQuote.cs" />
@@ -85,6 +89,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612161105132_quotes and images.resx">
       <DependentUpon>201612161105132_quotes and images.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612161819171_fix.resx">
+      <DependentUpon>201612161819171_fix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

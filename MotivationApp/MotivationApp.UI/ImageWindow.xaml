@@ -1,0 +1,14 @@
+﻿<Window x:Class="MotivationApp.UI.ImageWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MotivationApp.UI"
+        mc:Ignorable="d"
+        Title="ImageWindow" Height="300" Width="300"
+        WindowStyle="None"
+        WindowState="Maximized">
+    <Grid Name="gridMain">
+        <Button Name="ButtonClose" Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5" Click="ButtonClose_Click">x</Button>
+    </Grid>
+</Window>

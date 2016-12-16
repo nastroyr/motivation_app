@@ -29,5 +29,7 @@ namespace Books.Data
         {
             get { return Subject.SubjectName; }
         }
+
+        public Book() { }
     }
 }

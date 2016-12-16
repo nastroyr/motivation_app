@@ -5,24 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MotivationApp.UI"
         mc:Ignorable="d"
-        Title="Motivation App" Height="500" Width="520" MinHeight="450" MaxHeight="500" MinWidth="400" MaxWidth="700">
+        Title="Motivation App" Height="600" Width="520" MinHeight="450" MinWidth="400" MaxWidth="700">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="3*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="90px"/>
         </Grid.RowDefinitions>
-        <Grid DataContext="{Binding suggestedBook}" Margin="10">
+        <Grid Name="GridBookInfo" Margin="10 10 10 0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
                 <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
             <Grid.Resources>
@@ -38,13 +38,15 @@
             <TextBlock Grid.Row="1">Название</TextBlock>
             <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding NameOfBook}"/>
             <TextBlock Grid.Row="2">Автор</TextBlock>
-            <TextBlock Grid.Column="1" Grid.Row="2"  Text="{Binding NameOfBook}"/>
+            <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding AuthorName}"/>
             <TextBlock Grid.Row="3">Жанр</TextBlock>
-            <TextBlock Grid.Column="1" Grid.Row="3"  Text="{Binding GenreName}"/>
+            <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding GenreName}"/>
             <TextBlock Grid.Row="4">Тематика</TextBlock>
-            <TextBlock Grid.Column="1" Grid.Row="4"  Text="{Binding SubjectName}"/>
-            <TextBlock Grid.Row="5">О книге</TextBlock>
-            <TextBlock Grid.Column="1" Grid.Row="4"  Text="{Binding SubjectName}"/>
+            <TextBlock Grid.Column="1" Grid.Row="4" Text="{Binding SubjectName}"/>
+            <TextBlock Grid.Row="5" VerticalAlignment="Top">О книге:</TextBlock>
+            <ScrollViewer Grid.Column="1" Grid.Row="5" >
+                <TextBlock TextWrapping="WrapWithOverflow" FontSize="14" Text="{Binding AboutBook}"/>
+            </ScrollViewer>
         </Grid>
         <Grid Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
             <Grid.ColumnDefinitions>
@@ -52,9 +54,11 @@
                 <ColumnDefinition/>
                 <ColumnDefinition Width="20"/>
             </Grid.ColumnDefinitions>
+            <Separator Grid.ColumnSpan="3" VerticalAlignment="Top" Margin="0 -10 0 0"/>
             <TextBlock FontSize="36" VerticalAlignment="Bottom" HorizontalAlignment="Left"  Margin="0 0 0 -10">„</TextBlock>
             <TextBlock Name="TextBlockQuote" Grid.Column="1" FontSize="16" FontFamily="calibri light" TextWrapping="WrapWithOverflow">Необходимо действовать, смело хватать жизнь за гриву. Я жалею исключительно о бездеятельности, нерешительности, колебаниях. О действиях и поступках, даже если они порой приносят печаль и тоску, по-настоящему не жалею никогда. (Анджей Сапковский)</TextBlock>
             <TextBlock FontSize="36" HorizontalAlignment="Right" Grid.Column="2" Margin="-0 -10 0 0"> “</TextBlock>
+            <Separator VerticalAlignment="Bottom" Grid.ColumnSpan="3" Margin="0 0 0 -15"/>
         </Grid>
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Name="BookshelfButton" Width="75" Height="75" Click="BookshelfButton_Click" Background="Transparent" BorderBrush="Transparent" ToolTip="Управление книгами">
