@@ -71,7 +71,16 @@
     <Compile Include="Migrations\201612161819171_fix.Designer.cs">
       <DependentUpon>201612161819171_fix.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612170955202_events.cs" />
+    <Compile Include="Migrations\201612170955202_events.Designer.cs">
+      <DependentUpon>201612170955202_events.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612171034508_fix1.cs" />
+    <Compile Include="Migrations\201612171034508_fix1.Designer.cs">
+      <DependentUpon>201612171034508_fix1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="MotivationEvent.cs" />
     <Compile Include="MotivationImage.cs" />
     <Compile Include="MotivationQuote.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -92,6 +101,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612161819171_fix.resx">
       <DependentUpon>201612161819171_fix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612170955202_events.resx">
+      <DependentUpon>201612170955202_events.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612171034508_fix1.resx">
+      <DependentUpon>201612171034508_fix1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

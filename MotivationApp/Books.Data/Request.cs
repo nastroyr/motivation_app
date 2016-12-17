@@ -121,5 +121,50 @@ namespace Books.Data
             }
             context.SaveChanges();
         }
+
+        public List<MotivationEvent> GetAllEvents()
+        {
+            return (from e in context.MotivationEvents
+                    orderby e.DateDue ascending
+                    select e).ToList();
+        }
+
+        public List<MotivationEvent> GetEventsToShow()
+        {
+            return context.MotivationEvents
+                .Where(
+                    e => e.RepeatSeconds != 0 &&
+                    DbFunctions.DiffSeconds(e.LastRemind, DateTime.Now) >= e.RepeatSeconds)
+                .OrderBy(e => e.DateDue)
+                .ToList();
+            
+        }
+
+        public void ClearOldEvents()
+        {
+            List<MotivationEvent> eventsToDelete = (from e in context.MotivationEvents
+                                                    where e.DateDue <= DateTime.Now
+                                                    select e).ToList();
+            context.MotivationEvents.RemoveRange(eventsToDelete);
+            context.SaveChanges();
+        }
+
+        public void AddEvent(MotivationEvent e)
+        {
+            if (e != null)
+            {
+                context.MotivationEvents.Add(e);
+            }
+            context.SaveChanges();
+        }
+
+        public void RemoveEvent(MotivationEvent ev)
+        {
+            if (ev != null && context.MotivationEvents.Any(e => e.MotivationEventID == ev.MotivationEventID))
+            {
+                context.MotivationEvents.Remove(ev);
+                context.SaveChanges();
+            }
+        }
     }
 }

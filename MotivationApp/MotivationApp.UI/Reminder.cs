@@ -11,6 +11,7 @@ namespace MotivationApp.UI
     public delegate void QuoteUpdate(MotivationQuote Quote);
     public delegate void BookUpdate(Book Book);
     public delegate void ImagePopUp(MotivationImage Image);
+    public delegate void EventNotification(MotivationEvent Event);
 
     public class Reminder
     {
@@ -18,6 +19,7 @@ namespace MotivationApp.UI
         public QuoteUpdate OnQuoteUpdate { get; set; }
         public BookUpdate OnBookUpdate { get; set; }
         public ImagePopUp OnImagePopUp { get; set; }
+        public EventNotification OnEventNotification { get; set; }
 
         DispatcherTimer _timer;
         Request _request;
@@ -103,6 +105,20 @@ namespace MotivationApp.UI
                 }
             }
             isFirstLaunch = false;
+
+            List<MotivationEvent> events = _request.GetEventsToShow();
+            if (events.Count > 0)
+            {
+                foreach (MotivationEvent ev in events)
+                {
+                    if (ev != null)
+                    {
+                        OnEventNotification(ev);
+                        ev.LastRemind = DateTime.Now;
+                    }
+                }
+                _request.ClearOldEvents();
+            }
         }
 
         private void InitLastTimes()

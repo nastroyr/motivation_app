@@ -17,6 +17,8 @@ namespace Books.Data
 
         public DbSet<MotivationImage> MotivationImages { get; set; }
 
+        public DbSet<MotivationEvent> MotivationEvents { get; set; }
+
         public Context() : base("localsql")
         {
 

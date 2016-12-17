@@ -19,6 +19,7 @@ namespace MotivationApp.UI
             reminder.OnBookUpdate += (b => GridBookInfo.DataContext = b);
             reminder.OnQuoteUpdate += (q => TextBlockQuote.Text = q.QuoteText);
             reminder.OnImagePopUp += (i => ShowImageWindow(i));
+            reminder.OnEventNotification += (e => Notify(e));
             reminder.Start();
         }
 
@@ -53,6 +54,19 @@ namespace MotivationApp.UI
             window.Width = bitmap.Width;
 
             window.ShowDialog();
+        }
+
+        private void Notify(MotivationEvent e)
+        {
+            if (e.SoundRemind)
+            {
+                System.Media.SystemSounds.Beep.Play();
+            }
+            if (e.VisualRemind)
+            {
+                VisualRemindWindow win = new VisualRemindWindow(e);
+                win.Show();
+            }
         }
     }
 }
