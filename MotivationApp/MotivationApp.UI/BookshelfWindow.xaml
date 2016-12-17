@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MotivationApp.UI"
         mc:Ignorable="d"
-        Title="BookshelfWindow" Height="487.232" Width="893.031">
+        Title="Управление книгами" Height="566.732" Width="1032.531" ResizeMode="NoResize">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -13,16 +13,72 @@
             <ColumnDefinition Width="200"/>
         </Grid.ColumnDefinitions>
 
-        <DataGrid Name="BooksDataGrid" Margin="10" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="true">
+        <DataGrid Name="BooksDataGrid" Margin="10" IsReadOnly="False" AutoGenerateColumns="False" SelectionMode="Single" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" CanUserSortColumns="False" SelectionUnit="Cell" HorizontalScrollBarVisibility="Visible">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Название" Binding="{Binding NameOfBook}" Width="2*"/>
-                <DataGridTextColumn Header="Автор" Binding="{Binding AuthorName}" Width="2*"/>
-                <DataGridTextColumn Header="Жанр" Binding="{Binding GenreName}" Width="2*"/>
-                <DataGridTextColumn Header="Тематика" Binding="{Binding SubjectName}" Width="2*"/>
-                <DataGridTextColumn Header="Об авторе" Binding="{Binding AboutAuthor}" Width="2*"/>
-                <DataGridTextColumn Header="О книге" Binding="{Binding AboutBook}" Width="2*"/>
-                <DataGridTextColumn Header="Где купить" Binding="{Binding WhereToBuy}" Width="2*"/>
-                <DataGridTextColumn Header="Где скачать" Binding="{Binding WhereToDownloadFree}" Width="2*"/>
+                <DataGridTextColumn Header="Название" Binding="{Binding NameOfBook}" Width="60*" IsReadOnly="True">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                            <Setter Property="TextBlock.TextAlignment" Value="Left"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Автор" Binding="{Binding AuthorName}" Width="70" IsReadOnly="True" >
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                            <Setter Property="TextBlock.TextAlignment" Value="Left"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Жанр" Binding="{Binding GenreName}" Width="70*" IsReadOnly="True">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                            <Setter Property="TextBlock.TextAlignment" Value="Left"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Тематика" Binding="{Binding SubjectName}" Width="70*" IsReadOnly="True">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                            <Setter Property="TextBlock.TextAlignment" Value="Left"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Об авторе" Binding="{Binding AboutAuthor}" Width="110*" IsReadOnly="True">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                            <Setter Property="TextBlock.TextAlignment" Value="Left"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="О книге" Binding="{Binding AboutBook}" Width="120*" IsReadOnly="True">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                            <Setter Property="TextBlock.TextAlignment" Value="Left"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Где купить" Binding="{Binding WhereToBuy}" Width="100*">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                            <Setter Property="TextBlock.TextAlignment" Value="Left"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Где скачать" Binding="{Binding WhereToDownloadFree}" Width="100*">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                            <Setter Property="TextBlock.TextAlignment" Value="Left"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
 
@@ -68,15 +124,15 @@
                 </Grid.ColumnDefinitions>
                 <Label x:Name="OKLabel" Content="Найти"/>
                 <Button x:Name="OKButton"  Width="50" Click="OKButton_Click" Grid.Column="1">
-                    <Image Source="Icons/ok.png" Height="47" Width="50"></Image>
+                    <Image Source="Icons/magnifyingglass.png" Height="44" Width="50"></Image>
                 </Button>
                 <Label x:Name="ResetLabel"  Content="Сбросить" Grid.Row="1"/>
                 <Button x:Name="ResetButton" Width="50" Click="ResetButton_Click" Grid.Row="1" Grid.Column="1">
-                    <Image Source="Icons/delete.png" Height="47" Width="50"></Image>
+                    <Image Source="Icons/delete.png" Height="44" Width="50"></Image>
                 </Button>
                 <Label Width="79" Content="В PDF" Grid.Row="2"/>
                 <Button x:Name="PDFButton" Width="50" Background="Transparent" BorderBrush="Transparent" Grid.Row="2" Grid.Column="1" Click="PDFButton_Click">
-                    <Image Source="Icons/document.png" Height="47" Width="50"></Image>
+                    <Image Source="Icons/document.png" Height="44" Width="50"></Image>
                 </Button>
             </Grid>
         </StackPanel>

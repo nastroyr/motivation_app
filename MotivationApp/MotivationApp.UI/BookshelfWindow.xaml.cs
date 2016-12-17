@@ -38,7 +38,6 @@ namespace MotivationApp.UI
                     {
                         yield return (T)child;
                     }
-
                     foreach (T childOfChild in FindVisualChildren<T>(child))
                     {
                         yield return childOfChild;
@@ -54,7 +53,6 @@ namespace MotivationApp.UI
             {
                 return child;
             }
-
             return null;
         }
 
@@ -119,7 +117,7 @@ namespace MotivationApp.UI
 
         private void ResetButton_Click(object sender, RoutedEventArgs e)
         {
-            foreach(Object o in sortingStackPanel.Children)
+            foreach(object o in sortingStackPanel.Children)
             {
                 if (o is CheckBox)
                 {
@@ -131,13 +129,13 @@ namespace MotivationApp.UI
 
         private void PDFButton_Click(object sender, RoutedEventArgs e)
         {
-            string ttf = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "ARIAL.TTF");
+            string ttf = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "ARIAL.TTF");
             var baseFont = BaseFont.CreateFont(ttf, BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
             var font = new Font(baseFont, Font.DEFAULTSIZE, Font.NORMAL);
 
-            
-            Document doc = new Document(PageSize.LETTER, 8, 8, 35, 30);
-            PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream("Test.pdf", FileMode.Create));
+            Rectangle rec = new Rectangle(2000, 800);
+            Document doc = new Document(rec, 5, 5, 15, 5);
+            PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream("Список книг.pdf", FileMode.Create));
             doc.Open();
 
             PdfPTable table = new PdfPTable(BooksDataGrid.Columns.Count);
@@ -169,9 +167,11 @@ namespace MotivationApp.UI
                     }
                 }
             }
+            
             doc.Add(table);
             doc.Close();
-            MessageBox.Show("Всё готово!");
+            MessageBox.Show("Список книг записан в файл 'Список книг'");
+
         }
     }
 }

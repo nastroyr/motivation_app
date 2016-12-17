@@ -81,6 +81,9 @@
     <Compile Include="SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="StopwatchWindow.xaml.cs">
+      <DependentUpon>StopwatchWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VisualRemindWindow.xaml.cs">
       <DependentUpon>VisualRemindWindow.xaml</DependentUpon>
     </Compile>
@@ -123,6 +126,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SettingsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StopwatchWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -169,9 +176,6 @@
     <Resource Include="Icons\scheduler.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\showall.png" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Books.Data\Books.Data.csproj">
       <Project>{d7d9fe77-eb86-477b-ba26-6bd54ab45286}</Project>
       <Name>Books.Data</Name>
@@ -187,19 +191,49 @@
     <Resource Include="Icons\idea.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\email.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Icons\document.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\calendar.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Icons\mail.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Icons\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\pause.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\selftimer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\canc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\gear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\memorycard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\notification_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\notification_error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\button_cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\magnifyingglass.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

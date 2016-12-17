@@ -1,0 +1,24 @@
+﻿<Window x:Class="MotivationApp.UI.StopwatchWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MotivationApp.UI"
+        mc:Ignorable="d"
+        Title="StopwatchWindow" Height="264.845" Width="447.882" ResizeMode="NoResize">
+    <Grid>
+        <Label x:Name="StopwatchLabel" Content="" HorizontalAlignment="Left" Margin="126,87,0,0" VerticalAlignment="Top" Width="230" Height="64" FontSize="24" UseLayoutRounding="True"/>
+        <Button x:Name="PlayButton" HorizontalAlignment="Left" Margin="105,156,0,0" VerticalAlignment="Top" Width="65" Height="67" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Click="PlayButton_Click">
+            <Image Source="Icons/play.png" Height="58" Width="57"></Image>
+        </Button>
+        <Button x:Name="PauseButton" HorizontalAlignment="Left" Margin="192,156,0,0" VerticalAlignment="Top" Width="68" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Height="67" Click="PauseButton_Click">
+            <Image Source="Icons/pause.png" Height="57" Width="58"></Image>
+        </Button>
+        <Button x:Name="button"  HorizontalAlignment="Left" Margin="274,156,0,0" VerticalAlignment="Top" Width="67" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Height="67" Click="button_Click">
+            <Image Source="Icons/stop.png" Height="57" Width="58"></Image>
+        </Button>
+        <Label x:Name="label" Content="Секундомер безделья" HorizontalAlignment="Left" Margin="116,10,0,0" VerticalAlignment="Top" FontFamily="Buxton Sketch" FontSize="26" Width="225" Height="42"/>
+        <Label x:Name="label1" Content="Ставь его, когда безделье побеждает тебя" HorizontalAlignment="Left" Margin="67,51,0,0" VerticalAlignment="Top" FontSize="16"/>
+
+    </Grid>
+</Window>

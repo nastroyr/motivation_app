@@ -68,5 +68,11 @@ namespace MotivationApp.UI
                 win.Show();
             }
         }
+
+        private void StopWatchButton_Click(object sender, RoutedEventArgs e)
+        {
+            StopwatchWindow sw = new StopwatchWindow();
+            sw.Show();
+        }
     }
 }
