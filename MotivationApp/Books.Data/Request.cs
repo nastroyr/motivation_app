@@ -49,6 +49,12 @@ namespace Books.Data
                     }).ToList();
         }
 
+        public List<Genre> getAllGenres()
+        {
+            return (from g in context.Genres
+                    select g).ToList();
+        }
+
         public MotivationQuote RandomQuote()
         {
             MotivationQuote quote = null;

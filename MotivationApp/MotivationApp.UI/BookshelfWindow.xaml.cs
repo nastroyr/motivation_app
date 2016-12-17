@@ -18,10 +18,12 @@ namespace MotivationApp.UI
     public partial class BookshelfWindow : Window
     {
         Request request = new Request();
+        List<Genre> AllGenres;
 
         public BookshelfWindow()
         {
             InitializeComponent();
+            AllGenres = request.getAllGenres();
 
         }
         public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj)
@@ -64,19 +66,19 @@ namespace MotivationApp.UI
 
             if (NovelCheckBox.IsChecked == true)
             {
-                checkGenre.Add(1);
+                checkGenre.Add(AllGenres.Find(g => g.GenreName == "Роман").GenreID);
             }
             if (BusinessBookСheckBox.IsChecked == true)
             {
-                checkGenre.Add(2);
+                checkGenre.Add(AllGenres.Find(g => g.GenreName == "Зарубежная деловая литература").GenreID);
             }
             if (PsychologyCheckBox.IsChecked == true)
             {
-                checkGenre.Add(3);
+                checkGenre.Add(AllGenres.Find(g => g.GenreName == "Психология").GenreID);
             }
             if (PhilosophyCheckBox.IsChecked == true)
             {
-                checkGenre.Add(4);
+                checkGenre.Add(AllGenres.Find(g => g.GenreName == "Философия").GenreID);
             }
             if (SuccessCheckBox.IsChecked == true)
             {

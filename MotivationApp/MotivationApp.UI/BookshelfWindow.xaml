@@ -50,12 +50,12 @@
                 <TextBlock Width="150" TextWrapping="Wrap">Зарубежная деловая литература</TextBlock>
             </CheckBox>
             <CheckBox x:Name="PsychologyCheckBox" Content="Психология"/>
+            <CheckBox x:Name="PhilosophyCheckBox" Content="Философия" />
 
             <Label Content="Выберите тематику:"/>
             <CheckBox x:Name="SuccessCheckBox" Content="Стремление к успеху" />
             <CheckBox x:Name="BusinessCheckBox" Content="Бизнес" />
             <CheckBox x:Name="SelfDevelopmentСheckBox" Content="Саморазвитие" />
-            <CheckBox x:Name="PhilosophyCheckBox" Content="Философия" />
             <Grid HorizontalAlignment="Center">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
