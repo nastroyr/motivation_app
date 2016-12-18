@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MotivationApp.UI"
         mc:Ignorable="d"
-        Title="AddEventWindow" Height="365" Width="340">
+        Title="Добавление событий" Height="365" Width="340">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="35" />
@@ -66,7 +66,10 @@
             <CheckBox Name="checkBoxSound" Content="Звуковое"/>
             <CheckBox Name="checkBoxVisual" Margin="5 0 0 0" Content="Визуальное"/>
         </StackPanel>
-        <Button HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="6" Grid.ColumnSpan="2" Width="100" Height="35" Margin="10" Content="Добавить" Click="Button_Click"/>
+        <Button HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="6" Width="55" Height="50" Margin="104,10,43,10" Click="Button_Click" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Grid.Column="1">
+            <Image Source="Icons/ok.png"></Image>
+        </Button>
+        <Label x:Name="label" Content="Добавить" Grid.Column="1" HorizontalAlignment="Left" Margin="23,19,0,0" Grid.Row="6" VerticalAlignment="Top" FontFamily="Buxton Sketch" FontSize="18" Height="41"/>
 
     </Grid>
 </Window>

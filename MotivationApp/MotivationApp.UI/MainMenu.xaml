@@ -65,12 +65,12 @@
                 <Image Source="Icons/bookshelf.png" Height="67" Width="67"></Image>
             </Button>
             <Button Name="SchedulerButton" Width="75" Height="75" Background="Transparent" BorderBrush="Transparent" Click="SchedulerButton_Click" ToolTip="Планировщик событий">
-                <Image Source="Icons/scheduler.png" Height="69" Width="78"></Image>
+                <Image Source="Icons/scheduler.png" Height="69" Width="75"></Image>
             </Button>
             <Button Name="SettingsButton" Width="75" Height="75" Background="Transparent" BorderBrush="Transparent" Click="SettingsButton_Click" ToolTip="Настройки">
                 <Image Source="Icons/gear.png" Height="69" Width="72"></Image>
             </Button>
-            <Button x:Name="StopWatchButton"  Width="77" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Click="StopWatchButton_Click" Margin="0,8,0,7">
+            <Button x:Name="StopWatchButton"  Width="77" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Click="StopWatchButton_Click" Margin="0,8,0,7" ToolTip="Секундомер безделья">
                 <Image Source="Icons/selftimer.png" Height="69" Width="75"/>
             </Button>
         </StackPanel>

@@ -4,8 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MotivationApp.UI"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        mc:Ignorable="d" Height="350" Width="525">
     <Grid>
         <Button x:Name="StartButton"  HorizontalAlignment="Left" Margin="158,112,0,0" VerticalAlignment="Top" Width="201" Height="163" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Click="StartButton_Click">
             <Image Source="Icons/Start.png"></Image>
