@@ -57,7 +57,7 @@
 
 
 
-        <Label x:Name="label" Content="Добавить" Grid.Column="1" HorizontalAlignment="Left" Margin="22,29,0,0" Grid.Row="4" VerticalAlignment="Top" Width="104" Height="35"  FontFamily="Monotype Corsiva" FontSize="22"/>
+        <Label x:Name="label" Content="     ОК" Grid.Column="1" Margin="0,19,90,0" Grid.Row="4" VerticalAlignment="Top" Height="45"  FontFamily="Monotype Corsiva" FontSize="30"/>
 
     </Grid>
 </Window>
