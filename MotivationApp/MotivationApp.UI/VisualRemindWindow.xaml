@@ -26,7 +26,7 @@
                 <Setter Property="VerticalAlignment" Value="Center"></Setter>
             </Style>
         </Grid.Resources>
-        <TextBlock>Не забудь о:</TextBlock>
+        <TextBlock Margin="0,5">Не забудь о:</TextBlock>
         <TextBlock Name="txtName" Grid.Column="1" Text="{Binding Name}"/>
         <TextBlock Grid.Row="1">Через</TextBlock>
         <Grid Name="datePickerDate" Grid.Row="1" Grid.Column="1">
@@ -44,11 +44,20 @@
             <TextBlock Name="txtDescription" TextWrapping="Wrap" Text="{Binding Description}"></TextBlock>
         </ScrollViewer>
 
-        <Button HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4" Width="49" Height="36" Margin="131,19,22,19"
-                
-                Click="Button_Click" Grid.Column="1"/>
-        
-        <Label x:Name="label" Content="Добавить" Grid.Column="1" HorizontalAlignment="Left" Margin="29,24,0,0" Grid.Row="4" VerticalAlignment="Top" Width="85" Height="31"/>
+        <Button HorizontalAlignment="Center" VerticalAlignment="Center"   Grid.Row="4" Width="49" Height="45" Margin="131,19,22,10"
+               
+            
+            Click="Button_Click" Grid.Column="1"
+                Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" BorderBrush="#FFFBFAFA" Foreground="#FFFBFBFB" Grid.RowSpan="2">
+            <Image Source="Icons/ok.png" OpacityMask="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}">
+            </Image>
+
+        </Button>
+
+
+
+
+        <Label x:Name="label" Content="Добавить" Grid.Column="1" HorizontalAlignment="Left" Margin="22,29,0,0" Grid.Row="4" VerticalAlignment="Top" Width="104" Height="35"  FontFamily="Monotype Corsiva" FontSize="22"/>
 
     </Grid>
 </Window>

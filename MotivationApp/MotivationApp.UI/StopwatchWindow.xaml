@@ -17,7 +17,7 @@
         <Button x:Name="button"  HorizontalAlignment="Left" Margin="274,156,0,0" VerticalAlignment="Top" Width="67" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Height="67" Click="button_Click">
             <Image Source="Icons/stop.png" Height="57" Width="58"></Image>
         </Button>
-        <Label x:Name="label" Content="Секундомер безделья" HorizontalAlignment="Left" Margin="116,10,0,0" VerticalAlignment="Top" FontFamily="Buxton Sketch" FontSize="26" Width="225" Height="42"/>
+        <Label x:Name="label" Content="Секундомер безделья" HorizontalAlignment="Left" Margin="84,10,0,0" VerticalAlignment="Top" FontFamily="Buxton Sketch" FontSize="26"/>
         <Label x:Name="label1" Content="Ставь его, когда безделье побеждает тебя" HorizontalAlignment="Left" Margin="67,51,0,0" VerticalAlignment="Top" FontSize="16"/>
 
     </Grid>
