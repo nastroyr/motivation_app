@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MotivationApp.UI"
         mc:Ignorable="d"
-        Title="SettingsWindow" Height="350" Width="500" MinWidth="400" MinHeight="350">
+        Title="Настройки" Height="350" Width="500" MinWidth="400" MinHeight="350">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
@@ -27,8 +27,8 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <TextBox Name="TextBoxQuote" Grid.Row="2" Margin="10"/>
-        <Button Name="ButtonAdd" Grid.Row="2" Grid.Column="1" Margin="0 10 10 10" Click="ButtonAdd_Click">Добавить</Button>
-        <Button Name="ButtonDelete" Grid.Row="2" Grid.Column="2" Margin="0 10 10 10" Click="ButtonDelete_Click">Удалить</Button>
+        <Button Name="ButtonAdd" Grid.Row="2" Grid.Column="1" Margin="0 10 10 10" Click="ButtonAdd_Click" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">Добавить</Button>
+        <Button Name="ButtonDelete" Grid.Row="2" Grid.Column="2" Margin="0 10 10 10" Click="ButtonDelete_Click" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">Удалить</Button>
         <Separator Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Bottom"/>
         <Grid Grid.Row="3" Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>
@@ -49,13 +49,36 @@
             <TextBox Name="QuotesInterval" Grid.Row="1" Grid.Column="1" Margin="5"></TextBox>
             <Label Grid.Row="2" VerticalAlignment="Center" Content="Интервал смены книг, с" Margin="5 0 0 0"/>
             <TextBox Name="BooksInterval" Grid.Row="2" Grid.Column="1" Margin="5"></TextBox>
-            <Grid Grid.RowSpan="3" Grid.Column="2">
+            <Grid Grid.RowSpan="3" Grid.Column="2" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" OpacityMask="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Button Name="ButtonSave" Margin="10 5" Click="ButtonSave_Click">Сохранить настройки</Button>
-                <Button Name="ButtonCancel" Grid.Row="1" Margin="10 5" Click="ButtonCancel_Click">Отмена</Button>
+                <Button Name="ButtonSave" Margin="140,5,22,0" Click="ButtonSave_Click" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" BorderBrush="#FFFBFAFA" Foreground="#FFFBFBFB">
+                    <Image Source="Icons/memorycard.png" Height="44" Width="50" OpacityMask="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}"/>
+                </Button>
+                <Button Name="ButtonCancel" Margin="138,15,24,-12" Click="ButtonCancel_Click" RenderTransformOrigin="0.5,0.5" Grid.Row="1" Background="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" BorderBrush="#FFFDFDFD" Foreground="#FFFBFBFB">
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform AngleX="1.58"/>
+                            <RotateTransform/>
+                            <TranslateTransform X="0.593"/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                    <Image Source="Icons/canc.png" Height="44" Width="60" RenderTransformOrigin="-0.729,1.501" OpacityMask="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}">
+                        <Image.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="0.045"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Image.RenderTransform>
+                    </Image>
+                </Button>
+                <Label x:Name="labelSave" Content="Сохранить" HorizontalAlignment="Left" Margin="20,5,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.224,-0.038" Height="38" Width="115" FontFamily="Monotype Corsiva" FontSize="24"/>
+                <Label x:Name="labelCancel1" Content="Отменить" HorizontalAlignment="Left" Margin="20,20,0,0" Grid.Row="1" VerticalAlignment="Top" Width="115" Height="33" FontFamily="Monotype Corsiva" FontSize="24"/>
             </Grid>
         </Grid>
     </Grid>

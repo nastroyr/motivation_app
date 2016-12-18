@@ -32,8 +32,12 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <StackPanel Grid.Column="1">
-            <Button Height="30" Margin="5" Click="Button_Click">Добавить</Button>
-            <Button Height="30" Margin="5" Click="Button_Click_1">Удалить</Button>
+            <Button Height="53" Margin="0,5,5,5" Click="Button_Click" HorizontalAlignment="Right" Width="75" Background="White" BorderBrush="White" Foreground="#FFF9F6F6">
+                <Image Source="Icons/notification_add.png" RenderTransformOrigin="-0.759,0.622"></Image>
+            </Button>
+            <Button Height="53" Margin="10,5,5,5" Click="Button_Click_1" Background="White" BorderBrush="White" Foreground="White">
+                <Image Source="Icons/notification_error.png"></Image>
+            </Button>
         </StackPanel>
     </Grid>
 </Window>

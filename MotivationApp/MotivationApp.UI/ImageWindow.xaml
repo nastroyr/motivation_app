@@ -9,6 +9,17 @@
         WindowStyle="None"
         WindowState="Maximized">
     <Grid Name="gridMain">
-        <Button Name="ButtonClose" Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5" Click="ButtonClose_Click">x</Button>
+        <Button Name="ButtonClose" Width="39" Height="36" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,5,251" Click="ButtonClose_Click">
+            <Image Source="Icons/button_cancel.png" Height="30" Width="46" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="1.776"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+        </Button>
     </Grid>
 </Window>

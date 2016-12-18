@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MotivationApp.UI"
         mc:Ignorable="d"
-        Title="Motivation App" Height="600" Width="520" MinHeight="450" MinWidth="400" MaxWidth="700">
+        Title="Главное меню" Height="600" Width="520" MinHeight="450" MinWidth="400" MaxWidth="700">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
@@ -68,7 +68,7 @@
                 <Image Source="Icons/scheduler.png" Height="69" Width="78"></Image>
             </Button>
             <Button Name="SettingsButton" Width="75" Height="75" Background="Transparent" BorderBrush="Transparent" Click="SettingsButton_Click" ToolTip="Настройки">
-                <Image Source="Icons/settings.png" Height="69" Width="72"></Image>
+                <Image Source="Icons/gear.png" Height="69" Width="72"></Image>
             </Button>
             <Button x:Name="StopWatchButton"  Width="77" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Click="StopWatchButton_Click" Margin="0,8,0,7">
                 <Image Source="Icons/selftimer.png" Height="69" Width="75"/>
